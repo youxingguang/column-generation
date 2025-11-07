@@ -21,21 +21,24 @@ $$
 \begin{align}
 &min\quad z=24x_1+29x_2+10x_3+38x_4 \\
 &s.t. \quad x_1+4x_2+5x_3=60\\
-&\quad \quad \;\;  2x_2+3x_3\le 12\\
-&\quad \quad \;\;2x_1+x_2-x_3+4x_4\ge 10\\
-&\quad \quad \;\; x_i\ge 0
+&\quad \quad   2x_2+3x_3\le 12\\
+&\quad \quad 2x_1+x_2-x_3+4x_4\ge 10\\
+&\quad \quad  x_i\ge 0
 \end{align}
 $$
+
 添加松弛变量，使不等式约束变成等式约束
+
 $$
 \begin{align}
 &min\quad z=24x_1+29x_2+10x_3+38x_4 \\
 &s.t. \quad x_1+4x_2+5x_3=60\\
-&\quad \quad \;\;  2x_2+3x_3+x_5= 12\\
-&\quad \quad \;\;2x_1+x_2-x_3+4x_4-x_6= 10\\
-&\quad \quad \;\; x_i\ge 0
+&\quad \quad   2x_2+3x_3+x_5= 12\\
+&\quad \quad  2x_1+x_2-x_3+4x_4-x_6= 10\\
+&\quad \quad  x_i\ge 0
 \end{align}
 $$
+
 转化为矩阵形式
 $$
 \begin{align}
@@ -50,6 +53,7 @@ x_N
 &\quad \quad \;\; x\ge 0
 \end{align}
 $$
+
 最终结果: 表1
 
 | 变量  |   值    |  检验数 |
@@ -62,6 +66,7 @@ $$
 
 step 1： 选择基矩阵 $B$ 和基变量 $x_B$
 不妨选择$(x_1,x_3,x_5)$，保证基矩阵可逆即可。
+
 $$
 Bx_B=\begin{bmatrix}
 1&5&0\\
@@ -93,6 +98,7 @@ x_5\\
 $$
 
 step 2： 计算对偶解
+
 $$
 \pi B=[
 \pi_1\quad
@@ -103,6 +109,7 @@ $$
 2&-1&0\\
 \end{bmatrix}=c_B=[24 \quad 10\quad 0]
 $$
+
 求解结果：
 
 $$
@@ -114,6 +121,7 @@ step 3： 定价（找进基变量）
 reduced cost=$c_j-\pi A_j$
 
 对于基变量的检验数为0，(min) 找非基变量的检验数$<0$
+
 $$
 \bar{c}_2=29-[4\quad 0\quad  10]\begin{bmatrix}
 4\\
@@ -158,8 +166,10 @@ d_5\\
 4\\
 \end{bmatrix}=A_j
 $$
+
 这里的$A_j$是进基变量那列的系数.
 求得d:
+
 $$
 \begin{bmatrix}
 d_1\\
@@ -172,6 +182,7 @@ d_5\\
 4/11\\
 \end{bmatrix}
 $$
+
 step 5：选择出基变量
 希望基变量沿着 $d$ 方向走 $\theta$ 步长 (默认$\theta\ge 0$)，仍然保持可行性
 
@@ -194,11 +205,13 @@ d_5\\
 4/11\\
 \end{bmatrix}
 $$
+
 如果出现所有的$d_{B_i}$都非正，那么x沿着该方向，$\theta$可以无限增大，则问题无界。
 
 选 $max \{\theta\}$, 此时选$x_1,x_5$都可，不妨选$x_1$
 
 step6 更新 $B$ 和 $x_B$
+
 $$
 B=\begin{bmatrix}
 0&5&0\\
@@ -265,16 +278,18 @@ step 1: 基与基变量
 
 不妨构造单切方案，每根木料只用来做一种成品
 得到受限主问题RMP
+
 $$
 \begin{align}
 &min\quad z=x_1+x_2+x_3+x_4+x_5 \\
 &s.t. \quad 5x_1\ge 48\\
-&\quad \quad \;\;  2x_2\ge 35\\
-&\quad \quad \;\;2x_3\ge 24\\
-&\quad \quad \;\; 2x_4\ge 10\\
-&\quad \quad \;\; x_5\ge 8\\
+&\quad \quad   2x_2\ge 35\\
+&\quad \quad 2x_3\ge 24\\
+&\quad \quad  2x_4\ge 10\\
+&\quad \quad  x_5\ge 8\\
 \end{align}
 $$
+
 其中5=11/2整除,其他系数同理
 
 step 2: 求解RMP，同时获得对偶值
